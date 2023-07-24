@@ -54,7 +54,7 @@
   ]
 
 import { ref, reactive } from 'vue'
-let count = ref(0)
+let count = ref(3)
 
 function nextImg (){ 
   if ( count.value == images.length - 1) {
@@ -72,6 +72,12 @@ function prevImg (){
   }
   console.log(count.value)
 }
+
+function allImgFn(index){
+  count.value = index
+  console.log(index);
+
+}
 </script>
 
 <template>
@@ -80,8 +86,13 @@ function prevImg (){
       <div class="btn">
         <button @click="prevImg">Prev</button>
       </div>
-      <div class="ImageAll">
-        <img :src="images[count].src" alt="">
+      <div class="silderAllImg">
+        <div class="ImageAll">
+          <img :src="images[count].src" alt="" class="allimages">
+        </div>
+        <div class="flex overFlw gap">
+          <img @click="allImgFn(index)" :src="image.src" alt="" v-for="(image, index) in images" :key="index" class="nextImg">
+        </div>
       </div>
       <div class="btn">
         <button @click="nextImg">Next</button>
@@ -91,8 +102,22 @@ function prevImg (){
 </template>
 
 <style scoped> 
-.ImageAll{
+.gap{
+  gap: 8px;
+}
+.overFlw{
+  width: 100%;
   overflow: hidden;
+}
+.nextImg{
+  width: 100px;
+  height: 50px;
+}
+.ImageAll{
+  width: 100%;
+  height: 40rem;
+  overflow: hidden;
+  margin: 10px 0;
 }
 img{
   max-width: 100%;
@@ -103,10 +128,10 @@ img:hover{
   transform: scale(1.4);
 }
 .flex{
-  gap: 10px;
   display: flex;
 }
 button{
+  margin: 0 6px;
   margin-top: 40ex;
   border: 2px double rebeccapurple;
   border-radius: 6px ;
