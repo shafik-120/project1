@@ -1,5 +1,6 @@
 <script setup>
-import carosul from './components/carosul.vue'
+// import carosul from './components/carosul.vue'
+import myChange from './components/myChange.vue';
 // import { ref } from 'vue';
 
 // const currentIndex = ref(0);
@@ -26,7 +27,8 @@ import carosul from './components/carosul.vue'
 </script>
 
 <template>
-  <carosul/>
+  <myChange/>
+  <!-- <carosul/> -->
   <!-- <div>
     <div class="flex">
       <div class="btn w-1/6">
